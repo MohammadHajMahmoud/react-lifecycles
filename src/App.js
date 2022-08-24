@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import Timer from './components/Timer'
+  class App extends Component {
 
-class App extends Component {
-
-  render() {
-    return (
-      <div className="App">
-        <h1>Hello, World!</h1>
-      </div>
-    );
+    constructor() {
+      super()
+      this.state = {
+        showTime: true
+      }
+    }
+  
+    hideTime = () => {
+      this.setState({ showTime: false })
+    }
+  
+    render() {
+      let timer = this.state.showTime ? <Timer /> : null
+      return (
+        <div className="App">
+          {timer}
+          <button onClick={this.hideTime}>Hide Time</button>
+        </div>
+      );
+    }
   }
-}
+  
 
 export default App;
